@@ -14,7 +14,7 @@ IMAGE    ?= tp2
 DATA_DIR ?= $(shell pwd)/data
 
 PROGS   := upload findrec findtitle findrange seek1 seek2 seekrange
-COMMON  := src/blockio.cpp src/csv_reader.cpp src/disk_record.cpp src/hash_file.cpp
+COMMON  := src/blockio.cpp src/csv_reader.cpp src/disk_record.cpp src/hash_file.cpp src/index_builder.cpp
 BINS    := $(addprefix bin/,$(PROGS))
 
 .PHONY: build clean docker-build $(addprefix docker-run-,$(PROGS))
