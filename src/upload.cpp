@@ -16,6 +16,7 @@
 #include "csv_reader.hpp"
 #include "hash_file.hpp"
 #include "paths.hpp"
+#include "index_builder.hpp"
 
 int main(int argc, char** argv) {
     if (argc < 2) {
@@ -77,6 +78,9 @@ int main(int argc, char** argv) {
                     (ull)tr_t, (ull)tr_a, (ull)tr_s);
         std::printf("blocos escritos (carga) : %llu\n", (ull)hf.stats().writes);
         std::printf("tempo                   : %lld ms\n", (long long)ms);
+ 
+        hf.close();
+        build_all_indexes(kDataPath);  // indices da Parte 2
         return 0;
     } catch (const std::exception& e) {
         std::fprintf(stderr, "erro: %s\n", e.what());
